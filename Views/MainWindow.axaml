@@ -3,7 +3,8 @@
         xmlns:vm="using:OnlineScoreboard3000.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="470" d:DesignHeight="600"
+		Width="470" Height="600"
         x:Class="OnlineScoreboard3000.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="OnlineScoreboard3000">
@@ -11,7 +12,38 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<Window.Styles>
+		<Style Selector="TextBlock.H1">
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="Button.B1">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+		</Style>
+	</Window.Styles>
+	<Grid RowDefinitions="0.1*,0.1*,*" ShowGridLines="True">
+		<Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*,*">
+			<Button Grid.Column="0" Classes="B1" Content="Вылет"/>
+			<Button Grid.Column="1" Classes="B1" Content="Прилёт"/>
+			<Button Grid.Column="2" Classes="B1" Content="Обновить"/>
+			<Button Grid.Column="3" Classes="B1" Content="Вчера"/>
+			<Button Grid.Column="4" Classes="B1" Content="Сегодня"/>
+			<Button Grid.Column="5" Classes="B1" Content="Завтра"/>
+		</Grid>
+		<Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*,*">
+			<TextBlock Grid.Column="0" Text="Рейс" Classes="H1"/>
+			<TextBlock Grid.Column="1" Text="Назначение"  Classes="H1"/>
+			<TextBlock Grid.Column="2" Text="По Расписанию" Classes="H1"/>
+			<TextBlock Grid.Column="3" Text="Расчётное" Classes="H1"/>
+			<TextBlock Grid.Column="4" Text="Сектор" Classes="H1"/>
+			<TextBlock Grid.Column="5" Text="Статус" Classes="H1"/>
+		</Grid>
+		<Grid Grid.Row="2">
+		</Grid>
+	</Grid>
 
 </Window>

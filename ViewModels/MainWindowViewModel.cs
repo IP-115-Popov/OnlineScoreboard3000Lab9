@@ -15,7 +15,7 @@ namespace OnlineScoreboard3000.ViewModels
         private bool checkYesterday;
         private bool checkToday;
         private bool checkTomorrow;
-        private ObservableCollection<Reis>  flightsList;
+        private ObservableCollection<Reis> reisList;
         public MainWindowViewModel()
         {
             CheckDeparture = true;
@@ -23,8 +23,8 @@ namespace OnlineScoreboard3000.ViewModels
             CheckYesterday = false;
             CheckToday = true;
             CheckTomorrow = false;
-            FlightsList = new ObservableCollection<Reis>();
-            FlightsList.Add(new Reis());
+            ReisList = new ObservableCollection<Reis>();
+            ReisList.Add(new Reis());
         }
         public bool CheckDeparture
         {
@@ -89,12 +89,12 @@ namespace OnlineScoreboard3000.ViewModels
                 }
             }
         }
-        private ObservableCollection<Reis> FlightsList
+        private ObservableCollection<Reis> ReisList
         {
-            get => flightsList;
+            get => reisList;
             set
             {
-                this.RaiseAndSetIfChanged(ref flightsList, value);
+                this.RaiseAndSetIfChanged(ref reisList, value);
             }
         }
     }

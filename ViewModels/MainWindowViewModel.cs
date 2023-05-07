@@ -1,22 +1,54 @@
 using Avalonia.Animation;
+using OnlineScoreboard3000.Models;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace OnlineScoreboard3000.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        private bool checkDeparture;
+        private bool checkArrival;
         private bool checkYesterday;
         private bool checkToday;
         private bool checkTomorrow;
-
+        private ObservableCollection<Reis>  flightsList;
         public MainWindowViewModel()
         {
+            CheckDeparture = true;
+            CheckArrival = false;
             CheckYesterday = false;
             CheckToday = true;
             CheckTomorrow = false;
+            FlightsList = new ObservableCollection<Reis>();
+            FlightsList.Add(new Reis());
+        }
+        public bool CheckDeparture
+        {
+            get => checkDeparture;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref checkDeparture, value);
+                if (CheckDeparture == true)
+                {
+                    CheckArrival = false;
+                }
+            }
+        }
+        public bool CheckArrival
+        {
+            get => checkArrival;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref checkArrival, value);
+                if (CheckArrival == true)
+                {
+                    CheckDeparture = false;
+                }
+            }
         }
         public bool CheckYesterday
         {
@@ -57,6 +89,13 @@ namespace OnlineScoreboard3000.ViewModels
                 }
             }
         }
-
+        private ObservableCollection<Reis> FlightsList
+        {
+            get => flightsList;
+            set
+            {
+                this.RaiseAndSetIfChanged(ref flightsList, value);
+            }
+        }
     }
 }

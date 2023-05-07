@@ -24,22 +24,23 @@
 			<Setter Property="HorizontalAlignment" Value="Stretch"/>
 			<Setter Property="VerticalAlignment" Value="Stretch"/>
 		</Style>
+		<Style Selector="ToggleButton">
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions="0.1*,0.1*,*" ShowGridLines="True">
 		<Grid Grid.Row="0" ColumnDefinitions="*,*,*,*,*,*">
-			<Button Grid.Column="0" Classes="B1" Content="Вылет"/>
-			<Button Grid.Column="1" Classes="B1" Content="Прилёт"/>
+			<ToggleButton Grid.Column="0" IsChecked="{Binding CheckDeparture}" Content="Вылет"/>
+			<ToggleButton Grid.Column="1" IsChecked="{Binding CheckArrival}" Content="Прилёт"/>
+
 			<Button Grid.Column="2" Classes="B1" Content="Обновить"/>
 			
-			<!--<Button Grid.Column="4" Classes="B1" Content="Сегодня"/>
-			<Button Grid.Column="5" Classes="B1" Content="Завтра"/>-->
 			<ToggleButton Grid.Column="3" IsChecked="{Binding CheckYesterday}" Content="Вчера"/>
 			<ToggleButton Grid.Column="4" IsChecked="{Binding CheckToday}" Content="Сегодня"/>
 			<ToggleButton Grid.Column="5" IsChecked="{Binding CheckTomorrow}" Content="Завтра"/>
-			<!--<RadioButton Grid.Column="4"  Content="Сегодня"
-									GroupName="TimeFlight"/>
-			<RadioButton Grid.Column="5" Content="Завтра"
-									GroupName="TimeFlight"/>-->
 		</Grid>
 		<Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*,*">
 			<TextBlock Grid.Column="0" Text="Рейс" Classes="H1"/>
@@ -50,6 +51,32 @@
 			<TextBlock Grid.Column="5" Text="Статус" Classes="H1"/>
 		</Grid>
 		<Grid Grid.Row="2">
+			<ListBox Items="{Binding FlightsList}" Name="FlightsList">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Expander>
+							<Expander.Header>
+								<Grid ColumnDefinitions="*,*,*,*,*,*">
+									<TextBlock Grid.Column="0" Text="Рейс" Classes="H1"/>
+									<TextBlock Grid.Column="1" Text="Назначение"  Classes="H1"/>
+									<TextBlock Grid.Column="2" Text="По Расписанию" Classes="H1"/>
+									<TextBlock Grid.Column="3" Text="Расчётное" Classes="H1"/>
+									<TextBlock Grid.Column="4" Text="Сектор" Classes="H1"/>
+									<TextBlock Grid.Column="5" Text="Статус" Classes="H1"/>
+								</Grid>
+							</Expander.Header>
+							<Grid ColumnDefinitions="*,*,*,*,*,*">
+								<TextBlock Grid.Column="0" Text="Рейс" Classes="H1"/>
+								<TextBlock Grid.Column="1" Text="Назначение"  Classes="H1"/>
+								<TextBlock Grid.Column="2" Text="По Расписанию" Classes="H1"/>
+								<TextBlock Grid.Column="3" Text="Расчётное" Classes="H1"/>
+								<TextBlock Grid.Column="4" Text="Сектор" Classes="H1"/>
+								<TextBlock Grid.Column="5" Text="Статус" Classes="H1"/>
+							</Grid>
+						</Expander>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Grid>
 	</Grid>
 

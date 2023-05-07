@@ -30,9 +30,16 @@
 			<Button Grid.Column="0" Classes="B1" Content="Вылет"/>
 			<Button Grid.Column="1" Classes="B1" Content="Прилёт"/>
 			<Button Grid.Column="2" Classes="B1" Content="Обновить"/>
-			<Button Grid.Column="3" Classes="B1" Content="Вчера"/>
-			<Button Grid.Column="4" Classes="B1" Content="Сегодня"/>
-			<Button Grid.Column="5" Classes="B1" Content="Завтра"/>
+			
+			<!--<Button Grid.Column="4" Classes="B1" Content="Сегодня"/>
+			<Button Grid.Column="5" Classes="B1" Content="Завтра"/>-->
+			<ToggleButton Grid.Column="3" IsChecked="{Binding CheckYesterday}" Content="Вчера"/>
+			<ToggleButton Grid.Column="4" IsChecked="{Binding CheckToday}" Content="Сегодня"/>
+			<ToggleButton Grid.Column="5" IsChecked="{Binding CheckTomorrow}" Content="Завтра"/>
+			<!--<RadioButton Grid.Column="4"  Content="Сегодня"
+									GroupName="TimeFlight"/>
+			<RadioButton Grid.Column="5" Content="Завтра"
+									GroupName="TimeFlight"/>-->
 		</Grid>
 		<Grid Grid.Row="1" ColumnDefinitions="*,*,*,*,*,*">
 			<TextBlock Grid.Column="0" Text="Рейс" Classes="H1"/>

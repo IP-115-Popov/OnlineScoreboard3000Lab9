@@ -14,16 +14,17 @@ namespace OnlineScoreboard3000.Models.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.ToString() == "Алроса")
+            value = value switch
             {
-                value = "Assets\\Image\\ZF.jpg";
-            }
-            else
-            {
-                return null;
-            }
-            if (value == null)
-                return null;
+               "Алроса" => "Assets\\Image\\ZF.jpg",
+                "S7 Airlines" => "Assets\\Image\\S7.jpg",
+                "Якутия" => "Assets\\Image\\yakutia.png",
+                "SCAT Airlines" => "Assets\\Image\\scat.png",
+                "Южный ветер" => "Assets\\Image\\southwind.png",
+                "Победа" => "Assets\\Image\\pobeda.png",
+                "Россия" => "Assets\\Image\\Rossiya.png",
+                _ => null
+            };
 
             if (value is string rawUri && targetType.IsAssignableFrom(typeof(Bitmap)))
             {
@@ -45,8 +46,8 @@ namespace OnlineScoreboard3000.Models.Converters
 
                 return new Bitmap(asset);
             }
-
-            throw new NotSupportedException();
+            return null;
+            //throw new NotSupportedException();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

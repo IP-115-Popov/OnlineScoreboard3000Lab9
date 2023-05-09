@@ -22,6 +22,11 @@
 			<Setter Property="HorizontalAlignment" Value="Center"/>
 			<Setter Property="VerticalAlignment" Value="Center"/>
 		</Style>
+		<Style Selector="TextBlock.H2">
+			<Setter Property="FontSize" Value="10"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
 		<Style Selector="Button.B1">
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -61,44 +66,44 @@
 						<Expander>
 							<Expander.Header>
 								<Grid ColumnDefinitions="*,*,*,*,*,*,*">
-									<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }" Classes="H1"/>
-									<TextBlock Grid.Column="1" Text="{Binding Name}"  Classes="H1"/>
-									<TextBlock Grid.Column="2" Text="{Binding Appointment}" Classes="H1"/>
-									<TextBlock Grid.Column="3" Text="{Binding DepartureTime}" Classes="H1"/>
-									<TextBlock Grid.Column="4" Text="{Binding ArrivalTime}" Classes="H1"/>
-									<TextBlock Grid.Column="5" Text="{Binding Sector}" Classes="H1"/>
-									<TextBlock Grid.Column="6" Text="{Binding Status}" Classes="H1"/>
+									<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }"/>
+									<TextBlock Grid.Column="1" Text="{Binding Name}"  Classes="H2"/>
+									<TextBlock Grid.Column="2" Text="{Binding Appointment}" Classes="H2"/>
+									<TextBlock Grid.Column="3" Text="{Binding DepartureTime}" Classes="H2"/>
+									<TextBlock Grid.Column="4" Text="{Binding ArrivalTime}" Classes="H2"/>
+									<TextBlock Grid.Column="5" Text="{Binding Sector}" Classes="H2"/>
+									<TextBlock Grid.Column="6" Text="{Binding Status}" Classes="H2"/>
 								</Grid>
 							</Expander.Header>
 							<Grid ColumnDefinitions="*,*,*">
-								<Image Grid.Column="0"/>
+								<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }"/>
 								<Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
-									<TextBlock Grid.Column="0" Grid.Row="0" Text="Рейс" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="1" Text="Назначение"  Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="2" Text="По Расписанию" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="3" Text="Расчётное" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="4" Text="Сектор" Classes="H1"/>
+									<TextBlock Grid.Column="0" Grid.Row="0" Text="Рейс" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="1" Text="Назначение"  Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="2" Text="По Расписанию" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="3" Text="Расчётное" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="4" Text="Сектор" Classes="H2"/>
 									
-									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}"  Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Appointment}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DepartureTime}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ArrivalTime}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Sector}" Classes="H1"/>
+									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}"  Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Appointment}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DepartureTime}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ArrivalTime}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Sector}" Classes="H2"/>
 								</Grid>
 								<Grid Grid.Column="2" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
-									<TextBlock Grid.Column="0" Grid.Row="0" Text="Авиакомпания" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="1" Text="Тип ВС:"  Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="2" Text="Стойка регистрации" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="3" Text="Начало регистрации" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="4" Text="Посадка на борт" Classes="H1"/>
-									<TextBlock Grid.Column="0" Grid.Row="5" Text="Сектор выхода на посадку" Classes="H1"/>
+									<TextBlock Grid.Column="0" Grid.Row="0" Text="Авиакомпания" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="1" Text="Тип ВС:"  Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="2" Text="Стойка регистрации" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="3" Text="Начало регистрации" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="4" Text="Посадка на борт" Classes="H2"/>
+									<TextBlock Grid.Column="0" Grid.Row="5" Text="Сектор выхода на посадку" Classes="H2"/>
 								
-									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Company}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding TypeVS}"  Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Reseption}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding StartOfRegistration}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Boarding}" Classes="H1"/>
-									<TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding BoardingGateSector}" Classes="H1"/>
+									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Company}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding TypeVS}"  Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Reseption}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding StartOfRegistration}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Boarding}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding BoardingGateSector}" Classes="H2"/>
 								</Grid>
 							</Grid>
 						</Expander>

@@ -30,18 +30,34 @@ namespace OnlineScoreboard3000.ViewModels
             {
                 db.Reises.Add(new Reis()
                 {
-                    FirmImage = "iMAGE",
+                    FirmImage = "",
                     Name = "S5 5211",
                     Appointment = "Благовещенск",
-                    DepartureTime = new DateTime(2015, 7, 20, 18, 30, 25),
-                    ArrivalTime = new DateTime(2015, 7, 20, 18, 30, 25),
+                    DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                    ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
                     Sector = "A",
                     Status = "Вылетел",
                     Company = "Алроса",
                     TypeVS = "В-737",
                     Reseption = 12,
-                    StartOfRegistration = new DateTime(2015, 7, 20, 18, 30, 25),
-                    Boarding = new DateTime(2015, 7, 20, 18, 30, 25),
+                    StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
+                    Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
+                    BoardingGateSector = 3,
+                });
+                db.Reises.Add(new Reis()
+                {
+                    FirmImage = "",
+                    Name = "S5 5211",
+                    Appointment = "Благовещенск",
+                    DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                    ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                    Sector = "A",
+                    Status = "Вылетел",
+                    Company = "S7 Airlines",
+                    TypeVS = "В-737",
+                    Reseption = 12,
+                    StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
+                    Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
                     BoardingGateSector = 3,
                 });
                 db.SaveChanges();

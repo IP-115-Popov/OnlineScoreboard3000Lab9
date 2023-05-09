@@ -11,7 +11,6 @@ namespace OnlineScoreboard3000.Models
     {
         public long Id { get; set; }
         //
-        private string firmImage;
         private string name;
         private string appointment;
         private DateTime departureTime;
@@ -26,11 +25,6 @@ namespace OnlineScoreboard3000.Models
         private DateTime boarding;
         private int boardingGateSector;
 
-        public string FirmImage
-        {
-            get => firmImage;
-            set => SetAndRaise(ref firmImage, value);
-        }
         public string Name
         {
             get => name;

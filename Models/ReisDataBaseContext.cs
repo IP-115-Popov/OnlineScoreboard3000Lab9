@@ -13,7 +13,7 @@ namespace OnlineScoreboard3000.Models
         public ReisDataBaseContext() => Database.EnsureCreated();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=reisdata.db");
+            optionsBuilder.UseSqlite("Data Source=reisdata1.db");
         }
     }
 }

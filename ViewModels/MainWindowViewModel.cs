@@ -1,4 +1,5 @@
 using Avalonia.Animation;
+using Microsoft.EntityFrameworkCore;
 using OnlineScoreboard3000.Models;
 using ReactiveUI;
 using System;
@@ -26,50 +27,43 @@ namespace OnlineScoreboard3000.ViewModels
             CheckTomorrow = false;
             ReisList = new ObservableCollection<Reis>();
             //ReisList.Add(new Reis());
-            using (ReisDataBaseContext db = new ReisDataBaseContext())
-            {
-                db.Reises.Add(new Reis()
-                {
-                    FirmImage = "",
-                    Name = "S5 5211",
-                    Appointment = "Благовещенск",
-                    DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
-                    ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
-                    Sector = "A",
-                    Status = "Вылетел",
-                    Company = "Алроса",
-                    TypeVS = "В-737",
-                    Reseption = 12,
-                    StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
-                    Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
-                    BoardingGateSector = 3,
-                });
-                db.Reises.Add(new Reis()
-                {
-                    FirmImage = "",
-                    Name = "S5 5211",
-                    Appointment = "Благовещенск",
-                    DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
-                    ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
-                    Sector = "A",
-                    Status = "Вылетел",
-                    Company = "S7 Airlines",
-                    TypeVS = "В-737",
-                    Reseption = 12,
-                    StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
-                    Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
-                    BoardingGateSector = 3,
-                });
-                db.SaveChanges();
-            }
-            using (ReisDataBaseContext db = new ReisDataBaseContext())
-            {
-                var reises = db.Reises.ToList();
-                foreach(Reis i in reises)
-                {
-                    ReisList.Add(i);
-                }
-            }
+            /* using (ReisDataBaseContext db = new ReisDataBaseContext())
+             {
+                 db.Reises.Add(new Reis()
+                 {
+                     FirmImage = "",
+                     Name = "S5 5211",
+                     Appointment = "Благовещенск",
+                     DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                     ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                     Sector = "A",
+                     Status = "Вылетел",
+                     Company = "Алроса",
+                     TypeVS = "В-737",
+                     Reseption = 12,
+                     StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
+                     Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
+                     BoardingGateSector = 3,
+                 });
+                 db.Reises.Add(new Reis()
+                 {
+                     FirmImage = "",
+                     Name = "S5 5211",
+                     Appointment = "Благовещенск",
+                     DepartureTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                     ArrivalTime = new DateTime(2023, 7, 20, 18, 30, 25),
+                     Sector = "A",
+                     Status = "Вылетел",
+                     Company = "S7 Airlines",
+                     TypeVS = "В-737",
+                     Reseption = 12,
+                     StartOfRegistration = new DateTime(2023, 7, 20, 18, 30, 25),
+                     Boarding = new DateTime(2023, 7, 20, 18, 30, 25),
+                     BoardingGateSector = 3,
+                 });
+                 db.SaveChanges();
+             }*/
+            Update();
         }
         public bool CheckDeparture
         {
@@ -80,6 +74,7 @@ namespace OnlineScoreboard3000.ViewModels
                 if (CheckDeparture == true)
                 {
                     CheckArrival = false;
+                    Update();
                 }
             }
         }
@@ -92,6 +87,7 @@ namespace OnlineScoreboard3000.ViewModels
                 if (CheckArrival == true)
                 {
                     CheckDeparture = false;
+                    Update();
                 }
             }
         }
@@ -105,6 +101,7 @@ namespace OnlineScoreboard3000.ViewModels
                 {
                     CheckToday = false;
                     CheckTomorrow = false;
+                    Update();
                 }
             }
         }
@@ -118,6 +115,7 @@ namespace OnlineScoreboard3000.ViewModels
                 {
                     CheckYesterday = false;
                     CheckTomorrow = false;
+                    Update();
                 }
             }
         }
@@ -131,10 +129,11 @@ namespace OnlineScoreboard3000.ViewModels
                 {
                     CheckYesterday = false;
                     CheckToday = false;
+                    Update();
                 }
             }
         }
-        private ObservableCollection<Reis> ReisList
+        public ObservableCollection<Reis> ReisList
         {
             get => reisList;
             set
@@ -142,5 +141,46 @@ namespace OnlineScoreboard3000.ViewModels
                 this.RaiseAndSetIfChanged(ref reisList, value);
             }
         }
+        public void Update()
+        {
+            if (ReisList != null) ReisList.Clear();
+            using (ReisDataBaseContext db = new ReisDataBaseContext())
+            {
+                var reises = db.Reises.AsQueryable();
+                if (reises != null) return;
+                if (CheckDeparture)
+                {
+                    if (CheckYesterday)
+                    {
+                    reises = reises.Where(p => p.DepartureTime.Day == DateTime.Now.AddDays(-1).Day);
+                    }
+                    else if (CheckToday)
+                    {
+                    reises = reises.Where(p => p.DepartureTime.Day == DateTime.Now.Day);
+                    }
+                    else if (CheckTomorrow)
+                    {
+                    reises = reises.Where(p => p.DepartureTime.Day == DateTime.Now.AddDays(1).Day);
+                    }
+                }
+                else if (CheckArrival)
+                {
+                    if (CheckYesterday)
+                    {
+                        reises = reises.Where(p => p.ArrivalTime.Day == DateTime.Now.AddDays(-1).Day);
+                    }
+                    else if (CheckToday)
+                    {
+                        reises = reises.Where(p => p.ArrivalTime.Day == DateTime.Now.Day);
+                    }
+                    else if (CheckTomorrow)
+                    {
+                        reises = reises.Where(p => p.ArrivalTime.Day == DateTime.Now.AddDays(1).Day);
+                    }
+                   
+                }
+                foreach (Reis i in reises.ToList()) ReisList.Add(i);
+            }
+        }  
     }
 }

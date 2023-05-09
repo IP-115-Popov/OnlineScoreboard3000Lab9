@@ -4,6 +4,7 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace OnlineScoreboard3000.ViewModels
@@ -24,7 +25,35 @@ namespace OnlineScoreboard3000.ViewModels
             CheckToday = true;
             CheckTomorrow = false;
             ReisList = new ObservableCollection<Reis>();
-            ReisList.Add(new Reis());
+            //ReisList.Add(new Reis());
+            using (ReisDataBaseContext db = new ReisDataBaseContext())
+            {
+                db.Reises.Add(new Reis()
+                {
+                    FirmImage = "iMAGE",
+                    Name = "S5 5211",
+                    Appointment = "Благовещенск",
+                    DepartureTime = new DateTime(2015, 7, 20, 18, 30, 25),
+                    ArrivalTime = new DateTime(2015, 7, 20, 18, 30, 25),
+                    Sector = "A",
+                    Status = "Вылетел",
+                    Company = "Аллроса",
+                    TypeVS = "В-737",
+                    Reseption = 12,
+                    StartOfRegistration = new DateTime(2015, 7, 20, 18, 30, 25),
+                    Boarding = new DateTime(2015, 7, 20, 18, 30, 25),
+                    BoardingGateSector = 3,
+                });
+                db.SaveChanges();
+            }
+            using (ReisDataBaseContext db = new ReisDataBaseContext())
+            {
+                var reises = db.Reises.ToList();
+                foreach(Reis i in reises)
+                {
+                    ReisList.Add(i);
+                }
+            }
         }
         public bool CheckDeparture
         {

@@ -9,21 +9,22 @@ namespace OnlineScoreboard3000.Models
 {
     public class Reis : AbstractNotifyPropertyChanged
     {
+        public long Id { get; set; }
         //
         private string firmImage;
         private string name;
         private string appointment;
-        private string departureTime;
-        private string arrivalTime;
+        private DateTime departureTime;
+        private DateTime arrivalTime;
         private string sector;
         private string status;
         //
         private string company;
         private string typeVS;
-        private string reseption;
-        private string startOfRegistration;
-        private string boarding;
-        private string boardingGateSector;
+        private int reseption;
+        private DateTime startOfRegistration;
+        private DateTime boarding;
+        private int boardingGateSector;
 
         public string FirmImage
         {
@@ -40,12 +41,12 @@ namespace OnlineScoreboard3000.Models
             get => appointment;
             set => SetAndRaise(ref appointment, value);
         }
-        public string DepartureTime
+        public DateTime DepartureTime
         {
             get => departureTime;
             set => SetAndRaise(ref departureTime, value);
         }
-        public string ArrivalTime
+        public DateTime ArrivalTime
         {
             get => arrivalTime;
             set => SetAndRaise(ref arrivalTime, value);
@@ -71,22 +72,22 @@ namespace OnlineScoreboard3000.Models
             get => typeVS;
             set => SetAndRaise(ref typeVS, value);
         }
-        public string Reseption
+        public int Reseption
         {
             get => reseption;
             set => SetAndRaise(ref reseption, value);
         }
-        public string StartOfRegistration
+        public DateTime StartOfRegistration
         {
             get => startOfRegistration;
             set => SetAndRaise(ref startOfRegistration, value);
         }
-        public string Boarding
+        public DateTime Boarding
         {
             get => boarding;
             set => SetAndRaise(ref boarding, value);
         }
-        public string BoardingGateSector
+        public int BoardingGateSector
         {
             get => boardingGateSector;
             set => SetAndRaise(ref boardingGateSector, value);

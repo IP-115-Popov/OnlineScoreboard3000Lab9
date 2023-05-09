@@ -1,6 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:OnlineScoreboard3000.ViewModels"
+		xmlns:conv="clr-namespace:OnlineScoreboard3000.Models.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="470" d:DesignHeight="600"
@@ -12,6 +13,9 @@
     <Design.DataContext>
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+	<Window.Resources>
+		<conv:PathToImageConverter x:Key="pathToImageConverter"/>
+	</Window.Resources>
 	<Window.Styles>
 		<Style Selector="TextBlock.H1">
 			<Setter Property="FontSize" Value="10"/>
@@ -57,7 +61,7 @@
 						<Expander>
 							<Expander.Header>
 								<Grid ColumnDefinitions="*,*,*,*,*,*,*">
-									<TextBlock Grid.Column="0" Text="{Binding FirmImage}" Classes="H1"/>
+									<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }" Classes="H1"/>
 									<TextBlock Grid.Column="1" Text="{Binding Name}"  Classes="H1"/>
 									<TextBlock Grid.Column="2" Text="{Binding Appointment}" Classes="H1"/>
 									<TextBlock Grid.Column="3" Text="{Binding DepartureTime}" Classes="H1"/>

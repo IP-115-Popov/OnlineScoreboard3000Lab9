@@ -37,7 +37,7 @@ namespace OnlineScoreboard3000.ViewModels
                     ArrivalTime = new DateTime(2015, 7, 20, 18, 30, 25),
                     Sector = "A",
                     Status = "Âûכועוכ",
-                    Company = "Àככנמסא",
+                    Company = "Àכנמסא",
                     TypeVS = "Â-737",
                     Reseption = 12,
                     StartOfRegistration = new DateTime(2015, 7, 20, 18, 30, 25),

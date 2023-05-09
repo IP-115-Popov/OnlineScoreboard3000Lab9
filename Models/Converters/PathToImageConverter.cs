@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Avalonia.Data.Converters;
+using Avalonia.Platform;
+using Avalonia;
+using System;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Avalonia.Media.Imaging;
 
-namespace OnlineScoreboard3000.Assets.Converters
+namespace OnlineScoreboard3000.Models.Converters
 {
     public class PathToImageConverter : IValueConverter
     {
@@ -14,6 +14,14 @@ namespace OnlineScoreboard3000.Assets.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value.ToString() == "Алроса")
+            {
+                value = "Assets\\Image\\ZF.jpg";
+            }
+            else
+            {
+                return null;
+            }
             if (value == null)
                 return null;
 

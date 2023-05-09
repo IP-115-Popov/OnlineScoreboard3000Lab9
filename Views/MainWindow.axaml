@@ -4,8 +4,8 @@
 		xmlns:conv="clr-namespace:OnlineScoreboard3000.Models.Converters"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="470" d:DesignHeight="600"
-		Width="470" Height="600"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+		Width="600" Height="800"
         x:Class="OnlineScoreboard3000.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="OnlineScoreboard3000">
@@ -15,6 +15,7 @@
     </Design.DataContext>
 	<Window.Resources>
 		<conv:PathToImageConverter x:Key="pathToImageConverter"/>
+		<conv:DataTimeToHorsStringConverter x:Key="dataTimeToHorsStringConverter"/>
 	</Window.Resources>
 	<Window.Styles>
 		<Style Selector="TextBlock.H1">
@@ -26,6 +27,7 @@
 			<Setter Property="FontSize" Value="10"/>
 			<Setter Property="HorizontalAlignment" Value="Left"/>
 			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="10,0,0,0"/>
 		</Style>
 		<Style Selector="Button.B1">
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -65,17 +67,17 @@
 					<DataTemplate>
 						<Expander>
 							<Expander.Header>
-								<Grid ColumnDefinitions="*,*,*,*,*,*,*">
-									<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }"/>
+								<Grid Width="500" ColumnDefinitions="*,*,*,*,*,*,*">
+									<Image Grid.Column="0" HorizontalAlignment="Left" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }"/>
 									<TextBlock Grid.Column="1" Text="{Binding Name}"  Classes="H2"/>
 									<TextBlock Grid.Column="2" Text="{Binding Appointment}" Classes="H2"/>
-									<TextBlock Grid.Column="3" Text="{Binding DepartureTime}" Classes="H2"/>
-									<TextBlock Grid.Column="4" Text="{Binding ArrivalTime}" Classes="H2"/>
+									<TextBlock Grid.Column="3" Text="{Binding DepartureTime, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
+									<TextBlock Grid.Column="4" Text="{Binding ArrivalTime, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
 									<TextBlock Grid.Column="5" Text="{Binding Sector}" Classes="H2"/>
 									<TextBlock Grid.Column="6" Text="{Binding Status}" Classes="H2"/>
 								</Grid>
 							</Expander.Header>
-							<Grid ColumnDefinitions="*,*,*">
+							<Grid Width="500" ColumnDefinitions="*,*,*">
 								<Image Grid.Column="0" Source="{Binding Company, Converter={StaticResource pathToImageConverter} }"/>
 								<Grid Grid.Column="1" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
 									<TextBlock Grid.Column="0" Grid.Row="0" Text="Рейс" Classes="H2"/>
@@ -86,8 +88,8 @@
 									
 									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}"  Classes="H2"/>
 									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Appointment}" Classes="H2"/>
-									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DepartureTime}" Classes="H2"/>
-									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ArrivalTime}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding DepartureTime, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding ArrivalTime, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
 									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Sector}" Classes="H2"/>
 								</Grid>
 								<Grid Grid.Column="2" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
@@ -101,8 +103,8 @@
 									<TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Company}" Classes="H2"/>
 									<TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding TypeVS}"  Classes="H2"/>
 									<TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding Reseption}" Classes="H2"/>
-									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding StartOfRegistration}" Classes="H2"/>
-									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Boarding}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding StartOfRegistration, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
+									<TextBlock Grid.Column="1" Grid.Row="4" Text="{Binding Boarding, Converter={StaticResource dataTimeToHorsStringConverter}}" Classes="H2"/>
 									<TextBlock Grid.Column="1" Grid.Row="5" Text="{Binding BoardingGateSector}" Classes="H2"/>
 								</Grid>
 							</Grid>

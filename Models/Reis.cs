@@ -24,9 +24,7 @@ namespace OnlineScoreboard3000.Models
         private string startOfRegistration;
         private string boarding;
         private string boardingGateSector;
-        public Reis()
-        {
-        }
+
         public string FirmImage
         {
             get => firmImage;
